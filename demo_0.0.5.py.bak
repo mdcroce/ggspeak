@@ -35,7 +35,7 @@ def main():
 
     # Run speech recognition and graphing in a streaming format.
     while 1:
-        eval(input('Tap ENTER to continue.'))
+        input('Tap ENTER to continue.')
         with mic as source:
             audio = get_audio(r, source)
             try:
@@ -100,7 +100,7 @@ def choose_dataset(g):
     while not valid_file:
         try:
             print('Type file name.')
-            filename = os.getcwd()+'/'+eval(input('Filename: '+os.getcwd()+'/'))
+            filename = os.getcwd()+'/'+input('Filename: '+os.getcwd()+'/')
             dataset = pd.read_csv(filename)
             dataset.columns = [w.lower() for w in dataset.columns]
             # TODO: normalize headers by removing spaces and punct.

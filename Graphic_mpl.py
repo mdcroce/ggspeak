@@ -51,7 +51,7 @@ class Graphic(object):
 
         Assembles characteristics in the syntax of the graphic library.
         """
-        print self.summarize()
+        print (self.summarize())
 
         # Make a scatter plot.
         if self.geom in ['point']:
@@ -73,13 +73,13 @@ class Graphic(object):
             else:
                 d = self.dataset
                 grouping_name = self.grouping
-                print 'Grouping name: {}'.format(grouping_name)
+                print('Grouping name: {}'.format(grouping_name))
                 try:
                     group_example = d[grouping_name][0]
                 except:
-                    print 'Group example caused problems. Try again.'
-                    print d[grouping_name].head(3)
-                    print grouping_name
+                    print('Group example caused problems. Try again.')
+                    print (d[grouping_name].head(3))
+                    print (grouping_name)
                     return None
 
                 # Categorical grouping.
@@ -142,7 +142,7 @@ class Graphic(object):
                 # Make regular bar chart, if no grouping.
                 if self.grouping is None:
                     freqs = Counter(d[d_name])
-                    f = sorted(freqs.items(), key=lambda (k, v): -v)
+                    f = sorted(freqs.iteritems(), key=lambda k, v: -v)
                     names = [i for (i, j) in f]
                     counts = [j for (i, j) in f]
                     positions = np.arange(len(f))
@@ -155,7 +155,7 @@ class Graphic(object):
                     try:
                         group_example = d[grouping_name][0]
                     except:
-                        print 'Group example caused problems. Try again.'
+                        print('Group example caused problems. Try again.')
                         return None
 
                     # Categorical grouping.
@@ -166,7 +166,7 @@ class Graphic(object):
                         pl.set_xlabel(d_name)
                         pl.set_ylabel('Count')
                     else:
-                        print 'Not sure how to group by numeric vars.'
+                        print('Not sure how to group by numeric vars.')
 
         else:
             print('Not yet sure how to build this plot.')
@@ -185,9 +185,9 @@ class Graphic(object):
                                                                   'int64']]):
                     self.valid_graph = True
                 else:
-                    print 'Cannot plot if a variable is not numeric.'
+                    print('Cannot plot if a variable is not numeric.')
             except:
-                print 'Cannot identify data_cols.'
+                print('Cannot identify data_cols.')
         elif self.geom in ['hist', 'bar']:
             if len(self.data_cols) == 1:
                 d_name = str(self.data_cols[0])
@@ -197,7 +197,7 @@ class Graphic(object):
                                                                'int64']):
                     self.valid_graph = True
                 else:
-                    print 'Cannot make histogram from categorical variable.'
+                    print('Cannot make histogram from categorical variable.')
         else:
             self.valid_graph = False
 
@@ -217,15 +217,15 @@ class Graphic(object):
             return False
 
     def summarize(self):
-        print ' - Summary - '
-        print 'Dataset: {}'.format(self.filename)
-        print 'Geom: {}'.format(str(self.geom))
-        print 'Datacols: {}'.format(str(self.data_cols))
-        print 'Grouping: {}'.format(str(self.grouping))
+        print( '- Summary - ')
+        print('Dataset: {}'.format(self.filename))
+        print('Geom: {}'.format(str(self.geom)))
+        print('Datacols: {}'.format(str(self.data_cols)))
+        print('Grouping: {}'.format(str(self.grouping)))
         if len(self.data_cols) == 1:
             print('Type data 0: '+str(self.dataset[self.data_cols[0]].dtype))
         if len(self.data_cols) == 2:
             print('Type data 0: '+str(self.dataset[self.data_cols[0]].dtype))
             print('Type data 1: '+str(self.dataset[self.data_cols[1]].dtype))
-        print 'Valid status: {}'.format(str(self.is_valid_graph()))
+        print('Valid status: {}'.format(str(self.is_valid_graph())))
         return self
