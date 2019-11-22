@@ -46,7 +46,7 @@ def main():
 				terms = tokenize(text)
 				attentive = is_attentive(terms)
 				if not attentive:
-					print(Goodbye'
+					print('Goodbye')
 					return None
 				g = update_graph(g, terms)
 				g.make_gg_plot()
@@ -75,7 +75,7 @@ def prepare_mic():
 	return r, m	
 
 def choose_dataset(g):
-	print(Type file name.'
+	print('Type file name.')
 	filename = os.getcwd()+'/'+raw_input('Filename: '+os.getcwd()+'/')
 	try:
 		dataset = pd.read_csv(filename)
@@ -96,7 +96,7 @@ def choose_dataset(g):
 	return g
 
 def get_audio(r, source):
-	print "\n Listening..."
+	print ("\n Listening...")
 	audio = r.listen(source)
 	return audio
 
