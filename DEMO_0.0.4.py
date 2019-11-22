@@ -6,16 +6,23 @@
 #
 # Graph by voice.
 
-from ggplot import *
+from plotnine import *
 import speech_recognition as sr
 import time
 import unicodedata
 import sys
-import pyttsx
+
+
+import pyttsx3
+engine = pyttsx3.init()
+#engine.say("I am talking now ");
+#engine.setProperty('rate',100)
+#engine.runAndWait();
+
 import os
 from Graphic import Graphic
-from Tkinter import Tk
-from tkFileDialog import askopenfilename
+#from Tkinter import Tk
+#from tkFileDialog import askopenfilename
 import pandas as pd
 
 def main():

@@ -2,3 +2,6 @@ ggplot
 jellyfish
 pyaudio
 SpeechRecognition
+statsmodels==0.10.0rc2
+plotnine
+pyttsx

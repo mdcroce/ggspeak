@@ -8,7 +8,7 @@
 #
 # Note: Changed ggplot source code. See link: http://bit.ly/1UkFZCO
 
-from ggplot import *
+from plotnine import *
 
 
 class Graphic(object):
@@ -74,6 +74,6 @@ class Graphic(object):
         if self.valid_graph:
             plot = eval(self._make_gg_string())
             print ('Plotting...')
-            print plot
+            print(plot)
         else:
             print("Graph not valid. Try again.")
